@@ -16,6 +16,10 @@
 				<when test="shIfmmDelNy == 1">And IfmmDelNy = 1</when>
 				<when test="shIfmmDelNy == 0">And IfmmDelNy = 0</when>
 			</choose>		
+			<choose>
+				<when test="shIfmmGenderCd == 3">And IfmmGenderCd = 3</when>
+				<when test="shIfmmGenderCd == 4">And IfmmGenderCd = 4</when>
+			</choose>		
 			<if test="shIfmmId != null and !shIfmmId.equals('')"> AND ifmmId LIKE concat('%',#{shIfmmId},'%')</if>	
 			<if test="shIfmmName != null and !shIfmmName.equals('')"> AND ifmmName LIKE concat('%',#{shIfmmName},'%')</if>
 

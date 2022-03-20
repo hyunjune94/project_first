@@ -8,7 +8,8 @@ public class MemberVo {
 //	infrMember Search
 	private String shIfmmName;
 	private String shIfmmId;
-	private String shIfmmDelNy;
+	private Integer shIfmmDelNy;
+	private Integer shIfmmGenderCd;
 
 //	paging
 	private int thisPage = 1;									// 현재 페이지
@@ -95,12 +96,20 @@ public void setParamsPaging(int totalRowsParam) {
 		this.shIfmmId = shIfmmId;
 	}
 	
-	public String getShIfmmDelNy() {
+	public Integer getShIfmmDelNy() {
 		return shIfmmDelNy;
 	}
 
-	public void setShIfmmDelNy(String shIfmmDelNy) {
+	public void setShIfmmDelNy(Integer shIfmmDelNy) {
 		this.shIfmmDelNy = shIfmmDelNy;
+	}
+	
+	public Integer getShIfmmGenderCd() {
+		return shIfmmGenderCd;
+	}
+
+	public void setShIfmmGenderCd(Integer shIfmmGenderCd) {
+		this.shIfmmGenderCd = shIfmmGenderCd;
 	}
 
 	public int getThisPage() {

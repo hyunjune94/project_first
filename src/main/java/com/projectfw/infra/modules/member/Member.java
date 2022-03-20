@@ -6,6 +6,7 @@ public class Member {
 	private String ifmmId;
 	private String ifmmName;
 	private Integer ifmmDelNy;
+	private Integer ifmmGenderCd;
 	private Integer ifmmPhoneNumber1;
 	private Integer ifmmPhoneNumber2;
 	private Integer ifmmPhoneNumber3;
@@ -37,6 +38,12 @@ public class Member {
 	}
 	public void setIfmmDelNy(Integer ifmmDelNy) {
 		this.ifmmDelNy = ifmmDelNy;
+	}
+	public Integer getIfmmGenderCd() {
+		return ifmmGenderCd;
+	}
+	public void setIfmmGenderCd(Integer ifmmGenderCd) {
+		this.ifmmGenderCd = ifmmGenderCd;
 	}
 	public Integer getIfmmPhoneNumber1() {
 		return ifmmPhoneNumber1;

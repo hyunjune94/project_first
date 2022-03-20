@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -124,10 +123,10 @@
 						</select>
 					</div>
 					<div class="col-6 col-md-3">
-						<select class="form-select" aria-label="Default select example">
-							<option value="" selected>성별</option>
-							<option value="1">남</option>
-							<option value="2">여</option>
+						<select class="form-select" name="shIfmmGenderCd" id="shIfmmGenderCd">
+							<option value="">성별</option>
+							<option value="3" <c:if test="${vo.shIfmmGenderCd eq 3 }">selected</c:if>>남
+							<option value="4" <c:if test="${vo.shIfmmGenderCd eq 4 }">selected</c:if>>여
 						</select>
 					</div>
 					<div class="col-6 col-md-3">
