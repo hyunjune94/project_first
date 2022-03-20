@@ -1,0 +1,248 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"	crossorigin="anonymous">
+
+
+
+<title>강현준</title>
+
+<style type="text/css">
+.list_header {
+	width: 100%;
+	height: 120px;
+}
+
+.list_section {
+	width: 100%;
+	height: 600px;
+}
+
+.list_aside {
+	width: 100%;
+	height: 25%;
+}
+
+.list_content {
+	text-align: center;
+	width: 100%;
+	height: 60%;
+}
+
+.list_content>table {
+	margin: 0 auto;
+	text-align:center;
+}
+
+.list_footer {
+	background-color: #F2F2F2;
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	text-align: center;
+	color: #848484;
+}
+
+.list_section>div>select {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.col-6 {
+	/* 	border: 1px solid yellow; */
+	margin-top: 10px;
+}
+
+.btn_section {
+	text-align:center;
+}
+</style>
+
+</head>
+<body>
+	<div class="list_header">
+		<div class="container">
+			<header
+				class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+				<a href="/"
+					class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+					<svg class="bi me-2" width="40" height="32">
+						<use xlink:href="#bootstrap" /></svg> <span class="fs-4">PROJECT
+						CHERRY</span>
+				</a>
+
+				<ul class="nav nav-pills">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+						href="#" role="button" aria-expanded="false">강현준 님</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item disabled" href="#">hyunjune94@naver.com</a></li>
+							<li><a class="dropdown-item" href="#">내 정보</a></li>
+							<li><a class="dropdown-item" href="#">Something else
+									here</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">로그아웃</a></li>
+						</ul></li>
+					<li class="nav-item"><a href="#" class="nav-link">메뉴1</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">메뉴2</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">메뉴3</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">메뉴4</a></li>
+				</ul>
+			</header>
+		</div>
+	</div>
+
+	<div style="text-align: center;">
+		<h3 style="margin-top: 10px;">회원관리</h3>
+	</div>	
+	<div class="list_section">
+	
+	<form id="" name="" method="get" action="/infra/member/memberListTest">
+		<div class="list_aside">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 col-md-3">
+						<select class="form-select" aria-label="Default select example">
+							<option selected>가입 일자</option>
+							<option value="1">1년 이내</option>
+							<option value="2">1년~2년</option>
+							<option value="3">2년~3년</option>
+							<option value="3">3년 이상</option>
+						</select>
+					</div>
+					<div class="col-6 col-md-3">
+						<select class="form-select" aria-label="Default select example">
+							<option selected>연령</option>
+							<option value="1">8세 이하</option>
+							<option value="2">청소년</option>
+							<option value="3">성인</option>
+						</select>
+					</div>
+					<div class="col-6 col-md-3">
+						<select class="form-select" aria-label="Default select example">
+							<option value="" selected>성별</option>
+							<option value="1">남</option>
+							<option value="2">여</option>
+						</select>
+					</div>
+					<div class="col-6 col-md-3">
+						<select class="form-select" name="shIfmmDelNy" id="shIfmmDelNy">
+							<option value="">삭제여부</option>
+							<option value="1" <c:if test="${vo.shIfmmDelNy eq 1 }">selected</c:if>>Y
+							<option value="0" <c:if test="${vo.shIfmmDelNy eq 0 }">selected</c:if>>N
+						</select>
+					</div>
+					
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-6 col-md-3">
+						<input type="text" class="form-control" name="shIfmmId" id="shIfmmId" value="<c:out value="${vo.shIfmmId }"/>" placeholder="아이디">
+					</div>
+					<div class="col-6 col-md-3">
+						<input type="text" class="form-control" name="shIfmmName" id="shIfmmName" value="<c:out value="${vo.shIfmmName }"/>" placeholder="사용자 이름">
+					</div>
+					<div class="col-6 col-md-3">
+						<input type="submit" id="btnSubmit" name="search">
+						<button type="button" class="btn btn-primary">
+							<img src="../../../images/refresh.png">
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+		
+		
+
+		<div class="list_content">
+			<table class="table table-striped table-hover" style="width: 90%;">
+				<thead>
+					<tr>
+						<th>*</th>
+						<th>no</th>
+						<th>아이디</th>
+						<th style="min-width: 110px;">사용자 이름</th>
+						<th style="min-width: 130px;">전화번호</th>
+						<th>등록일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${fn:length(list) eq 0}">
+							<tr>
+								<td class="text-center" colspan="9">There is no data!</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="item" varStatus="status">
+								<tr>
+									<th style="width: 45px;"><div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="float: none;">
+									</div></th>
+									<th><c:out value="${item.ifmmSeq}" /></th>
+									<td><a href="/infra/member/memberViewTest?ifmmSeq=<c:out value="${item.ifmmSeq}"/>"><c:out value="${item.ifmmId}" /></a></td>
+									<td><c:out value="${item.ifmmName}" /></td>
+									<td><c:out value="${item.ifmmPhoneNumber1}" />-<c:out value="${item.ifmmPhoneNumber2}" />-<c:out value="${item.ifmmPhoneNumber3}" /></td>
+									<td><c:out value="${item.regDateTime}" /></td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+			<div class="container">
+				<div class="row">
+					<div class="col-6 col-md-3"></div>
+					<div class="col-6 col-md-3"></div>
+					<div class="col-6 col-md-3"></div>
+					<div class="col-6 col-md-3">
+						<button type="button" class="btn btn-danger">
+							<img src="../../../images/trash.png">
+						</button>
+						<button type="button" class="btn btn-primary">
+							<img src="../../../images/refresh.png">
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<nav aria-label="...">
+						<ul class="pagination" style="justify-content: center;">
+						    <c:if test="${vo.startPage gt vo.pageNumToShow}">
+								<li class="page-item"><a class="page-link" href="/infra/member/memberListTest?thisPage=${vo.startPage - 1}">Previous</a></li>
+							</c:if>
+							<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+								<c:choose>
+									<c:when test="${i.index eq vo.thisPage}">
+							        <li class="page-item active"><a class="page-link" href="/infra/member/memberListTest?thisPage=${i.index}">${i.index}</a></li>
+									</c:when>
+									<c:otherwise>             
+							        <li class="page-item"><a class="page-link" href="/infra/member/memberListTest?thisPage=${i.index}">${i.index}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>     
+							<c:if test="${vo.endPage ne vo.totalPages}">                
+							        <li class="page-item"><a class="page-link" href="/infra/member/memberListTest?thisPage=${vo.endPage + 1}">Next</a></li>
+							</c:if>  
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+
+
+</body>
+
+<script	src="../../../bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+</html>
