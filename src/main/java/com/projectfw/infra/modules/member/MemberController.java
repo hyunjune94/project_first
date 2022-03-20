@@ -43,6 +43,12 @@ public class MemberController {
 		return "member/memberViewTest";
 	}
 	
+	@RequestMapping(value = "/member/memberFormTest")
+	public String memberFormTest(Model model) throws Exception {
+
+		return "member/memberFormTest";
+	}
+	
 	
 	
 	
