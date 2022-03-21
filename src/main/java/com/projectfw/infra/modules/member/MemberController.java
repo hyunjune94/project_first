@@ -49,8 +49,32 @@ public class MemberController {
 		return "member/memberFormTest";
 	}
 	
+	@RequestMapping(value = "/member/memberInstTest")
+	public String memberInstTest(Model model, Member dto) throws Exception {
+
+		service.insert(dto);
+		
+		return "redirect:/member/memberListTest";
+	}
 	
+	@RequestMapping(value = "/member/memberForm2Test")	//주소입력
+	public String memberForm2Test(MemberVo vo, Model model) throws Exception {
+		
+		Member rt = service.selectOne(vo);
+		
+		model.addAttribute("item",rt);
+		
+		return "member/memberForm2Test";	//보여지는 jsp파일
+	}
 	
+	@RequestMapping(value = "/member/memberUpdtTest")	//주소입력
+	public String memberUpdtTest(Member dto) throws Exception {
+		
+		service.update(dto);
+		return "redirect:/member/memberViewTest?ifmmSeq=" + dto.getIfmmSeq();
+	}
+
+//------------------------------------------------------------------	
 	
 	
 	@RequestMapping(value = "/member/memberList")

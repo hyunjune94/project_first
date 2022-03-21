@@ -99,7 +99,7 @@ input, select, textarea {
 			    </div>
 			    <div class="col-12 col-md-6">
 					<label for="formGroupExampleInput" class="form-label">비밀번호</label>
-  					<h5><c:out value="${item.ifmmPhoneNumber2}" /></h5>
+  					<h5><c:out value="${item.ifmmPassword}" /></h5>
 			    </div>
 			    <div class="col-12 col-md-6">
 
@@ -125,15 +125,15 @@ input, select, textarea {
 							<option value="3">033)</option>
 							<option value="4">051)</option>
 							<option value="5">064)</option>
-						</select> <input type="text" class="form-control" aria-label="mn1" value="922" readonly>
+						</select> <input type="text" class="form-control" aria-label="mn1" value="<c:out value="${item.ifmmNumber1}" />" readonly>
 						<span class="input-group-text">-</span> 
-						<input type="text" class="form-control" aria-label="mn2" value="9001" readonly>
+						<input type="text" class="form-control" aria-label="mn2" value="<c:out value="${item.ifmmNumber2}" />" readonly>
 					</div>
 			    </div>
 
 			    <div class="col-12 col-md-6">
 					<label for="formGroupExampleInput" class="form-label">생일</label>
-  					<input type="date" class="form-control" id="name" value="1994-07-28" readonly>
+  					<input type="date" class="form-control" id="name" value="<c:out value="${item.ifmmDob}" />" readonly>
 			    </div>
 			    <div class="col-12 col-md-6">
 					<label for="formGroupExampleInput" class="form-label">성별</label>
@@ -146,13 +146,17 @@ input, select, textarea {
 					</div>
 					</div>
 			    </div>
-			    <div class="col-12 col-md-12">
-					<label for="formGroupExampleInput" class="form-label">주소1</label>
-  					<input type="text" class="form-control" id="name_eng">
+			    <div class="col-12 col-md-6">
+					<label for="formGroupExampleInput" class="form-label">우편번호</label>
+					<h5><c:out value="${item.ifmmZipCode}" /></h5>
+			    </div>
+			    <div class="col-12 col-md-6">
+			    	<label for="formGroupExampleInput" class="form-label">주소</label>
+  					<h5><c:out value="${item.ifmmAddress}" /></h5>
 			    </div>
 			    <div class="col-12 col-md-12">
-					<label for="formGroupExampleInput" class="form-label">주소2</label>
-  					<input type="text" class="form-control" id="name_eng">
+					<label for="formGroupExampleInput" class="form-label">상세주소</label>
+  					<h5><c:out value="${item.ifmmDetailedAddress}" /></h5>
 			    </div>
 			    
 			    <div class="col-12 col-md-6">
@@ -182,12 +186,11 @@ input, select, textarea {
 	
 	<br>
 	<div class="btn_area">
-		<button type="button" class="btn btn-outline-primary"	onclick="location.href='./memberList.html';">목록</button>
-		<button type="button" class="btn btn-outline-secondary"	onclick="location.href='./memberEdit.html';">수정</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberListTest';">목록</button>
+		<button type="button" class="btn btn-outline-primary" onclick="location.href='memberForm2Test?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">수정</button>
 	</div>
 	
 	<br><br><br>
-	<script	src="../../../../_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 	
 </body>
 

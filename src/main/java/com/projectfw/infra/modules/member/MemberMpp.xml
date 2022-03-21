@@ -48,23 +48,53 @@
 			insert into infrMember (
 				ifmmId
 				, ifmmName
-				,ifmmDelNy
+				, ifmmDelNy
+				, ifmmPassword
+				, ifmmPhoneNumber1
+				, ifmmPhoneNumber2
+				, ifmmPhoneNumber3
+				, ifmmAreaCodeCd
+				, ifmmNumber1
+				, ifmmNumber2
+				, ifmmDob
+				, ifmmZipCode
+				, ifmmAddress
+				, ifmmDetailedAddress
 			) values (
 				#{ifmmId}
-				,#{ifmmName}
-				,0
+				, #{ifmmName}
+				, 0
+				, #{ifmmPassword}
+				, #{ifmmPhoneNumber1}
+				, #{ifmmPhoneNumber2}
+				, #{ifmmPhoneNumber3}
+				, #{ifmmAreaCodeCd}
+				, #{ifmmNumber1}
+				, #{ifmmNumber2}
+				, #{ifmmDob}
+				, #{ifmmZipCode}
+				, #{ifmmAddress}
+				, #{ifmmDetailedAddress}
 			)
 	</insert>
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.ifmmSeq
-		    , a.ifmmId
-		    , a.ifmmName
-		    , a.ifmmDelNy
-		    , a.ifmmPhoneNumber1
-		    , a.ifmmPhoneNumber2
-		    , a.ifmmPhoneNumber3
+		    , ifmmId
+		    , ifmmName
+		    , ifmmDelNy
+		    , ifmmPassword
+		    , ifmmPhoneNumber1
+		    , ifmmPhoneNumber2
+		    , ifmmPhoneNumber3
+		    , ifmmAreaCodeCd
+			, ifmmNumber1
+			, ifmmNumber2
+			, ifmmDob
+			, ifmmZipCode
+			, ifmmAddress
+			, ifmmDetailedAddress
 		FROM
 			infrMember a
 		WHERE 1=1
@@ -73,9 +103,20 @@
 	</select>
 	
 	<update id="update">
-		update infrMember set
-			ifmmName = #{ifmmName}
-		where 1=1
-			and ifmmSeq = #{ifmmSeq}
+		UPDATE infrMember set
+			ifmmId = #{ifmmId}
+			, ifmmName = #{ifmmName}
+			, ifmmPassword = #{ifmmPassword}
+			, ifmmPhoneNumber1 = #{ifmmPhoneNumber1}
+		    , ifmmPhoneNumber2 = #{ifmmPhoneNumber2}
+		    , ifmmPhoneNumber3 = #{ifmmPhoneNumber3}
+		    , ifmmNumber1 = #{ifmmNumber1}
+		    , ifmmNumber2 = #{ifmmNumber2}
+		    , ifmmDob = #{ifmmDob}
+		    , ifmmZipCode = #{ifmmZipCode}
+		    , ifmmAddress = #{ifmmAddress}
+		    , ifmmDetailedAddress = #{ifmmDetailedAddress}
+		WHERE 1=1
+			AND ifmmSeq = #{ifmmSeq}
 	</update>
 </mapper>

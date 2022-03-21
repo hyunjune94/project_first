@@ -1,18 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE HTML>
 <html lang="ko">
 
 <head>
 <meta charset="uTF-8">
 <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"	crossorigin="anonymous">
+<link	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"	crossorigin="anonymous"> 
 
-<title>강현준</title>
+
+
+<title>hyunjune html projects</title>
 
 <style type="text/css">
 .form_header {
@@ -46,11 +49,12 @@ input, select, textarea {
 
 </style>
 </head>
-</head>
+
 <body>
 
-  
-  <div class="form_header">
+
+
+	<div class="form_header">
 		<div class="list_header">
 			<div class="container">
 				<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -86,62 +90,65 @@ input, select, textarea {
 	</div>	
 	<hr>
 	<br>
-	<form method="post" action="/infra/member/memberInstTest">
-		<div class = "form_body">			
+
+	<form method="post" action="/infra/member/memberUpdtTest">
+		<div class = "form_body">
 			<div class="container">
+	  			<input type="hidden" name="ifmmSeq" value="<c:out value="${item.ifmmSeq}"/>">
 				<div class="row g-3">
 				    <div class="col-12 col-md-6">
-							<label for="formGroupExampleInput" class="form-label">아이디</label>
-	  						<input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="영문(대소문자), 숫자, 특수문자, 4~20자리 조합">
+				   		<label for="formGroupExampleInput" class="form-label">아이디</label>
+	  					<input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="아이디" value="<c:out value="${item.ifmmId}"/>">
 				    </div>
 				    <div class="col-12 col-md-6">
 				    	<label for="formGroupExampleInput" class="form-label">이름</label>
-	  					<input type="text" class="form-control" id="ifmmName" name="ifmmName">
+				    	<input type="text" class="form-control" id="ifmmName" name="ifmmName"  placeholder="이름" value="<c:out value="${item.ifmmName}"/>">
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">비밀번호</label>
-	  					<input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="영문(대소문자), 숫자, 특수문자, 4~20자리 조합">
+	  					<input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword"  placeholder="비밀번호" value="<c:out value="${item.ifmmPassword}"/>">
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">비밀번호 확인</label>
-	  					<input type="password" class="form-control" id="Password_check">
+	  					<input type="password" class="form-control" id="Password_check" value="">
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">모바일</label>
 	  					<div class="input-group">
-							<input type="text" class="form-control" id="ifmmPhoneNumber1" name="ifmmPhoneNumber1">
+							<input type="text" class="form-control" id="ifmmPhoneNumber1" name="ifmmPhoneNumber1" value="<c:out value="${item.ifmmPhoneNumber1}"/>">
 							<span class="input-group-text">-</span> 
-							<input type="text" class="form-control" id="ifmmPhoneNumber2" name="ifmmPhoneNumber2">
+							<input type="text" class="form-control" id="ifmmPhoneNumber2" name="ifmmPhoneNumber2" value="<c:out value="${item.ifmmPhoneNumber2}"/>">
 							<span class="input-group-text">-</span> 
-							<input type="text" class="form-control" id="ifmmPhoneNumber3" name="ifmmPhoneNumber3">
+							<input type="text" class="form-control" id="ifmmPhoneNumber3" name="ifmmPhoneNumber3" value="<c:out value="${item.ifmmPhoneNumber3}"/>">
 						</div>
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">전화번호</label>
 	  					<div class="input-group	">
-							<select class="form-select" id="floatingSelectGrid"	aria-label="Floating label select example">
+							<select class="form-select" id="floatingSelectGrid"
+								aria-label="Floating label select example">
 								<option selected>지역</option>
 								<option value="1">02)</option>
-								<option value="2">031)</option>
+								<option value="2" selected>031)</option>
 								<option value="3">033)</option>
 								<option value="4">051)</option>
 								<option value="5">064)</option>
 							</select> 
-							<input type="text" class="form-control" id="ifmmNumber1" name="ifmmNumber1">
+							<input type="text" class="form-control"  id="ifmmNumber1" name="ifmmNumber1" value="<c:out value="${item.ifmmNumber1}"/>">
 							<span class="input-group-text">-</span> 
-							<input type="text" class="form-control" id="ifmmNumber2" name="ifmmNumber2">
+							<input type="text" class="form-control"  id="ifmmNumber2" name="ifmmNumber2" value="<c:out value="${item.ifmmNumber2}"/>">
 						</div>
 				    </div>
 	
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">생일</label>
-	  					<input type="date" class="form-control" id="ifmmDob" name="ifmmDob">
+	  					<input type="date" class="form-control"  id="ifmmDob" name="ifmmDob" value="<c:out value="${item.ifmmDob}"/>">
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">성별</label>
 	  					<div class="form-check">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="gender" id="gender" value="M"> <label class="form-check-label" for="inlineRadio1">남</label>
+							<input class="form-check-input" type="radio" name="gender" id="gender" value="M" checked> <label class="form-check-label" for="inlineRadio1">남</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="gender" id="gender" value="W"> <label class="form-check-label" for="inlineRadio2">녀</label>
@@ -149,22 +156,22 @@ input, select, textarea {
 						</div>
 				    </div>
 				    <div class="col-12 col-md-6">
-							<label for="formGroupExampleInput" class="form-label">우편번호</label>
-	  						<input type="text" class="form-control" id="member_post" name="ifmmZipCode" placeholder="Zip Code" readonly onclick="findAddr()">
+				   		<label for="formGroupExampleInput" class="form-label">우편번호</label>
+	  					<input type="text" class="form-control" id="member_post" name="ifmmZipCode" value="<c:out value="${item.ifmmZipCode}"/>" readonly onclick="findAddr()">
 				    </div>
 				    <div class="col-12 col-md-6">
 				    	<label for="formGroupExampleInput" class="form-label">주소</label>
-	  					<input type="text" class="form-control" id="member_addr" name="ifmmAddress" placeholder="Address" readonly>
+				    	<input type="text" class="form-control" id="member_addr" name="ifmmAddress" value="<c:out value="${item.ifmmAddress}"/>" readonly>
 				    </div>
 				    <div class="col-12 col-md-12">
 						<label for="formGroupExampleInput" class="form-label">상세주소</label>
-	  					<input type="text" class="form-control" id="Detailed Address" name="ifmmDetailedAddress">
+	  					<input type="text" class="form-control" id="Detailed Address" name="ifmmDetailedAddress" value="<c:out value="${item.ifmmDetailedAddress}"/>">
 				    </div>
 				    
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">개인정보 수집 동의</label>
 	  					<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="private_info">
+							<input class="form-check-input" type="checkbox" value="" id="private_info" checked>
 							<label class="form-check-label" for="flexCheckDefault">
 							동의합니다
 							</label>
@@ -173,28 +180,28 @@ input, select, textarea {
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">이메일 정보 마케팅 사용동의</label>
 	  					<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="Email_marketing">
+							<input class="form-check-input" type="checkbox" value="" id="Email_marketing" checked>
 							<label class="form-check-label" for="flexCheckDefault">
 							동의합니다
 							</label>
 						</div>
 				    </div>
 				</div>
-			</div>			
-		<br><br><hr>
-		</div>	
-		<div class="btn_area">
-			<button type="submit" class="btn btn-outline-primary">등록</button>
-			<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberListTest';">목록</button>
+			</div>	
+		<br>
+		<hr>
 		</div>
-	</form>	
 	
+		
+		<br>
+		<div class="btn_area">
+			<button type="submit" class="btn btn-outline-primary">수정</button>		
+			<button type="button" class="btn btn-outline-danger" onclick="location.href='memberViewTest?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">취소</button>
+		</div>
+	</form>
 	<br><br><br>
 	
 </body>
-
-
-
 
 <script>
 function findAddr(){
@@ -217,4 +224,6 @@ function findAddr(){
 }
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </html>
+
