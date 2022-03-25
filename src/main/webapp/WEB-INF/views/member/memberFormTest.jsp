@@ -46,7 +46,6 @@ input, select, textarea {
 
 </style>
 </head>
-</head>
 <body>
 
   
@@ -196,6 +195,7 @@ input, select, textarea {
 
 
 
+
 <script>
 function findAddr(){
 	new daum.Postcode({
@@ -215,6 +215,24 @@ function findAddr(){
         }
     }).open();
 }
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		 $("#abcDate").datepicker();
+	}); 
+
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>
