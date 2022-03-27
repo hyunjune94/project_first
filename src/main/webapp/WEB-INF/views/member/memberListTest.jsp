@@ -107,7 +107,9 @@
 	</div>	
 	<div class="list_section">
 	
-	<form id="" name="" method="get" action="/infra/member/memberListTest">
+	<form id="formList" name="formList" method="post" action="/infra/member/memberListTest">
+		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+		<input type="hidden" id="ifmmSeq" name="ifmmSeq">
 		<div class="list_aside">
 			<div class="container">
 				<div class="row">
@@ -154,28 +156,30 @@
 						<input type="text" class="form-control" name="shIfmmName" id="shIfmmName" value="<c:out value="${vo.shIfmmName }"/>" placeholder="사용자 이름">
 					</div>
 					<div class="col-6 col-md-3">
-						<input type="submit" id="btnSubmit" name="search">
-						<button type="button" class="btn btn-primary">
-							<img src="../../../images/refresh.png">
+						<button type="submit" class="btn btn-outline-warning">
+							<img src="${pageContext.request.contextPath}/resources/images/glass.png">
+						</button>
+						<button type="button" class="btn btn-outline-primary" onclick="location.href='memberListTest';">
+							<img src="${pageContext.request.contextPath}/resources/images/refresh.png">
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		</form>
-		
+		<br><br>
 		
 
 		<div class="list_content">
 			<table class="table table-striped table-hover" style="width: 90%;">
 				<thead>
 					<tr>
-						<th>*</th>
-						<th>no</th>
-						<th>아이디</th>
-						<th style="min-width: 110px;">사용자 이름</th>
-						<th style="min-width: 130px;">전화번호</th>
-						<th>등록일</th>
+						<th style="width:30px;">*</th>
+						<th style="width:60px;">no</th>
+						<th style="width:200px;">아이디</th>
+						<th style="width:150px; min-width: 110px;">사용자 이름</th>
+						<th style="width:200px; min-width: 130px;">전화번호</th>
+						<th style="width:200px;">등록일</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -192,7 +196,7 @@
 										<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="float: none;">
 									</div></th>
 									<th><c:out value="${item.ifmmSeq}" /></th>
-									<td><a href="/infra/member/memberViewTest?ifmmSeq=<c:out value="${item.ifmmSeq}"/>"><c:out value="${item.ifmmId}" /></a></td>
+									<td><a href="javascript:goForm(<c:out value="${item.ifmmSeq}"/>)"><c:out value="${item.ifmmId}" /></a></td>
 									<td><c:out value="${item.ifmmName}" /></td>
 									<td><c:out value="${item.ifmmPhoneNumber1}" />-<c:out value="${item.ifmmPhoneNumber2}" />-<c:out value="${item.ifmmPhoneNumber3}" /></td>
 									<td><c:out value="${item.regDateTime}" /></td>
@@ -208,11 +212,11 @@
 					<div class="col-6 col-md-3"></div>
 					<div class="col-6 col-md-3"></div>
 					<div class="col-6 col-md-3">
-						<button type="button" class="btn btn-danger">
-							<img src="../../../images/trash.png">
+						<button type="button" class="btn btn-outline-danger">
+							<img src="${pageContext.request.contextPath}/resources/images/trash.png">
 						</button>
-						<button type="button" class="btn btn-primary">
-							<img src="../../../images/refresh.png">
+						<button type="button" class="btn btn-outline-primary">
+							<img src="${pageContext.request.contextPath}/resources/images/refresh.png">
 						</button>
 					</div>
 				</div>
@@ -222,21 +226,21 @@
 					<nav aria-label="...">
 						<ul class="pagination" style="justify-content: center;">
 						    <c:if test="${vo.startPage gt vo.pageNumToShow}">
-								<li class="page-item"><a class="page-link" href="/infra/member/memberListTest?thisPage=${vo.startPage - 1}">Previous</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.startPage - 1}'/>);">Previous</a></li>
 							</c:if>
 							<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 								<c:choose>
 									<c:when test="${i.index eq vo.thisPage}">
-							        <li class="page-item active"><a class="page-link" href="/infra/member/memberListTest?thisPage=${i.index}">${i.index}</a></li>
+							        <li class="page-item active"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 									</c:when>
 									<c:otherwise>             
-							        <li class="page-item"><a class="page-link" href="/infra/member/memberListTest?thisPage=${i.index}">${i.index}</a></li>
+							        <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>     
 							<c:if test="${vo.endPage ne vo.totalPages}">                
-							        <li class="page-item"><a class="page-link" href="/infra/member/memberListTest?thisPage=${vo.endPage + 1}">Next</a></li>
-							</c:if>  
+							        <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.endPage + 1}'/>);">Next</a></li>
+							</c:if>   
 						</ul>
 					</nav>
 				</div>
@@ -248,6 +252,20 @@
 
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/infra/resources/js/validation.js"></script>
 
+<script type="text/javascript">
+goList = function(seq) {
+	$("#thisPage").val(seq);
+	$("#formList").submit();
+};
+
+goForm = function(seq) {
+	$("#ifmmSeq").val(seq);
+	$("#formList").attr("action","/infra/member/memberViewTest");
+	$("#formList").submit();
+};
+</script>
 <script	src="../../../bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </html>

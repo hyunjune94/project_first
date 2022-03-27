@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 @Controller
 public class MemberController {
@@ -73,6 +75,18 @@ public class MemberController {
 		service.update(dto);
 		return "redirect:/member/memberViewTest?ifmmSeq=" + dto.getIfmmSeq();
 	}
+	
+	@RequestMapping(value = "/member/memberDeleTest")	//주소입력
+	public String memberDeleTest(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.delete(vo);
+		
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());	
+//		redirectAttributes.addAttribute("shOption", vo.getShOption());	
+//		redirectAttributes.addAttribute("shValue", vo.getShValue());	
+		return "redirect:/member/memberListTest";
+	}
+	
 
 //------------------------------------------------------------------	
 	

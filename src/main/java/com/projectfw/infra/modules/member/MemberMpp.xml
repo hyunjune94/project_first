@@ -22,7 +22,6 @@
 			</choose>		
 			<if test="shIfmmId != null and !shIfmmId.equals('')"> AND ifmmId LIKE concat('%',#{shIfmmId},'%')</if>	
 			<if test="shIfmmName != null and !shIfmmName.equals('')"> AND ifmmName LIKE concat('%',#{shIfmmName},'%')</if>
-
 	</sql>
 
 	<select id="selectOneCount" resultType="Integer">
@@ -119,4 +118,12 @@
 		WHERE 1=1
 			AND ifmmSeq = #{ifmmSeq}
 	</update>
+	
+	<update id="updateDelete">
+		UPDATE infrMember set ifmmDelNy = 1 WHERE 1=1 AND ifmmSeq = #{ifmmSeq}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM infrMember WHERE 1=1 AND ifmmSeq = #{ifmmSeq}
+	</delete>
 </mapper>

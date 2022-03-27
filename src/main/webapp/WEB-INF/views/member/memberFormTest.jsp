@@ -183,7 +183,7 @@ input, select, textarea {
 		<br><br><hr>
 		</div>	
 		<div class="btn_area">
-			<button type="submit" class="btn btn-outline-primary">등록</button>
+			<button type="submit" id="btnSubmit" class="btn btn-outline-primary">등록</button>
 			<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberListTest';">목록</button>
 		</div>
 	</form>	
@@ -192,10 +192,8 @@ input, select, textarea {
 	
 </body>
 
-
-
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/infra/resources/js/validation.js"></script>
 <script>
 function findAddr(){
 	new daum.Postcode({
@@ -217,6 +215,26 @@ function findAddr(){
 }
 </script>
 <script type="text/javascript">
+
+	$("#btnSubmit").on("click", function(){
+	
+		if(!checkNull($("#ifmmId"),  $("#ifmmId").val(), "아이디를 입력해주세요")) return false;
+		if(!checkNull($("#ifmmName"),  $("#ifmmName").val(), "사용자 이름을 입력해주세요")) return false;
+		if(!checkNull($("#ifmmPassword"),  $("#ifmmPassword").val(), "비밀번호를 입력해주세요")) return false;
+		if(!checkNull($("#ifmmPhoneNumber1"),  $("#ifmmPhoneNumber1").val(), "모바일 전화번호를 입력해주세요")) return false;
+		if(!checkNull($("#ifmmPhoneNumber2"),  $("#ifmmPhoneNumber2").val(), "모바일 전화번호를 입력해주세요")) return false;
+		if(!checkNull($("#ifmmPhoneNumber3"),  $("#ifmmPhoneNumber3").val(), "모바일 전화번호를 입력해주세요")) return false;
+		if(!checkNull($("#ifmmNumber1"),  $("#ifmmNumber1").val(), "전화번호를 입력해주세요")) return false;
+		if(!checkNull($("#ifmmNumber2"),  $("#ifmmNumber2").val(), "전화번호를 입력해주세요")) return false;
+		if(!checkNull($("#ifmmDob"),  $("#ifmmDob").val(), "생년월일을 입력해주세요")) return false;
+//	if(!checkNull($("#gender"),  $("#gender").val(), "nulllllllll")) return false;
+		if(!checkNull($("#member_post"),  $("#member_post").val(), "주소를 입력해주세요")) return false;
+		if(!checkNull($("#private_info"),  $("#private_info").val(), "개인정보 수집동의를 체크해주세요")) return false;
+		if(!checkNull($("#Email_marketing"),  $("#Email_marketing").val(), "이메일 마케팅 수신 동의여부를 체크해주세요")) return false;
+		/* if(!checkNull($("#shValue"),  $("#shValue").val(), "null222222")) return false; */
+
+	});
+	
 	$(document).ready(function(){
 		 $("#abcDate").datepicker();
 	}); 

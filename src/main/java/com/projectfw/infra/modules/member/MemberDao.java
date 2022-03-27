@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
+
 @Repository
 public class MemberDao {
 	
@@ -23,6 +24,8 @@ public class MemberDao {
 	public int insert(Member dto){return sqlSession.insert(namespace + ".insert", dto);}
 	public Member selectOne(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo);}	
 	public int update(Member dto) { return sqlSession.update(namespace + ".update", dto);}	
+	public int delete(MemberVo vo) { return sqlSession.delete(namespace + ".delete", vo);}	
+	public int updateDelete(MemberVo vo) { return sqlSession.update(namespace + ".updateDelete", vo);}	
 	
 //	public List<Member> selectList(){return sqlSession.selectList(namespace + ".selectList", "");}
 }

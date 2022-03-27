@@ -188,10 +188,23 @@ input, select, textarea {
 	<div class="btn_area">
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberListTest';">목록</button>
 		<button type="button" class="btn btn-outline-primary" onclick="location.href='memberForm2Test?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">수정</button>
+		<button type="button" class="btn btn-outline-danger" id="btnDelete" onclick="location.href='memberDeleTest?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">삭제</button>
 	</div>
 	
 	<br><br><br>
 	
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	$("#btnDelete").on("click", function(){
+		var answer = confirm('삭제하시겠습니까?');
+			
+		if(answer) {
+		} else {
+			return false;
+		}
+	});
+</script>
 
 </html>
