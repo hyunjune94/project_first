@@ -70,7 +70,10 @@
 				, #{ifmmAreaCodeCd}
 				, #{ifmmNumber1}
 				, #{ifmmNumber2}
-				, #{ifmmDob}
+				<choose>
+					<when test="ifmmDob.equals('')">,NULL</when>
+					<otherwise>,#{ifmmDob}</otherwise>
+				</choose>
 				, #{ifmmZipCode}
 				, #{ifmmAddress}
 				, #{ifmmDetailedAddress}

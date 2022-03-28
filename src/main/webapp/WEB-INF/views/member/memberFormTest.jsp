@@ -229,8 +229,8 @@ function findAddr(){
 		if(!checkNull($("#ifmmDob"),  $("#ifmmDob").val(), "생년월일을 입력해주세요")) return false;
 //	if(!checkNull($("#gender"),  $("#gender").val(), "nulllllllll")) return false;
 		if(!checkNull($("#member_post"),  $("#member_post").val(), "주소를 입력해주세요")) return false;
-		if(!checkNull($("#private_info"),  $("#private_info").val(), "개인정보 수집동의를 체크해주세요")) return false;
-		if(!checkNull($("#Email_marketing"),  $("#Email_marketing").val(), "이메일 마케팅 수신 동의여부를 체크해주세요")) return false;
+//		if(!checkNull($("#private_info"),  $("#private_info").val(), "개인정보 수집동의를 체크해주세요")) return false;
+//		if(!checkNull($("#Email_marketing"),  $("#Email_marketing").val(), "이메일 마케팅 수신 동의여부를 체크해주세요")) return false;
 		/* if(!checkNull($("#shValue"),  $("#shValue").val(), "null222222")) return false; */
 
 	});
