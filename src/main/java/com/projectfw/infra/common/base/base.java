@@ -1,5 +1,7 @@
-package com.projectfw.infra.common.base;
-
-public class base {
-
-}
+/*
+ * package com.projectfw.infra.common.base;
+ * 
+ * public class base {
+ * 
+ * }
+ */

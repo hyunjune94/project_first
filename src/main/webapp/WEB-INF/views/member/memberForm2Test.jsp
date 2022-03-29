@@ -172,7 +172,7 @@ input, select, textarea {
 						<label for="formGroupExampleInput" class="form-label">개인정보 수집 동의</label>
 	  					<div class="form-check">
 	  					<input type="hidden" id="ifmmPushConsentNy" name="ifmmPushConsentNy" value="0">
-						<input class="form-check-input" type="checkbox" value="" id="ifmmPushConsent" name="ifmmPushConsent" <c:if test="${item.ifmmEmailConsentNy eq 1 }"> checked</c:if>>
+						<input class="form-check-input" type="checkbox" value="" id="ifmmPushConsent" name="ifmmPushConsent" checked> 
 							<label class="form-check-label" for="flexCheckDefault">
 							동의합니다
 							</label>

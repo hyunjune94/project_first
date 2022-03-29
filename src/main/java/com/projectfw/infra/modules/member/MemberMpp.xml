@@ -70,15 +70,17 @@
 				, #{ifmmAreaCodeCd}
 				, #{ifmmNumber1}
 				, #{ifmmNumber2}
-				<choose>
-					<when test="ifmmDob.equals('')">,NULL</when>
-					<otherwise>,#{ifmmDob}</otherwise>
-				</choose>
+				, #{ifmmDob}
 				, #{ifmmZipCode}
 				, #{ifmmAddress}
 				, #{ifmmDetailedAddress}
 			)
 	</insert>
+	
+		  <!--  <choose>
+					<when test="ifmmDob.equals('')">,NULL</when>
+					<otherwise>,#{ifmmDob}</otherwise>
+				</choose> -->
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT

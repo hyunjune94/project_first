@@ -73,13 +73,10 @@
 <body>
 	<div class="list_header">
 		<div class="container">
-			<header
-				class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-				<a href="/"
-					class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+			<header	class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+				<a href="/"	class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
 					<svg class="bi me-2" width="40" height="32">
-						<use xlink:href="#bootstrap" /></svg> <span class="fs-4">PROJECT
-						CHERRY</span>
+						<use xlink:href="#bootstrap" /></svg> <span class="fs-4">PROJECT CHERRY</span>
 				</a>
 
 				<ul class="nav nav-pills">
@@ -93,11 +90,8 @@
 									here</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="#">로그아웃</a></li>
-						</ul></li>
-					<li class="nav-item"><a href="#" class="nav-link">메뉴1</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">메뉴2</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">메뉴3</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">메뉴4</a></li>
+						</ul>
+					</li>
 				</ul>
 			</header>
 		</div>
@@ -110,6 +104,7 @@
 	
 	<form id="formList" name="formList" method="post" action="/infra/member/memberListTest">
 		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+		<input type="hidden" name="rowNumToshow" value="<c:out value="${vo.rowNumToShow }"/>">
 		<input type="hidden" id="ifmmSeq" name="ifmmSeq">
 		<div class="list_aside">
 			<div class="container">
@@ -213,12 +208,12 @@
 					<div class="col-6 col-md-3"></div>
 					<div class="col-6 col-md-3"></div>
 					<div class="col-6 col-md-3">
+						<button type="button" class="btn btn-outline-primary" onclick="location.href='memberFormTest';">
+							<img src="${pageContext.request.contextPath}/resources/images/plus.png">
+						</button>
 						<button type="button" class="btn btn-outline-danger">
 							<img src="${pageContext.request.contextPath}/resources/images/trash.png">
-						</button>
-						<button type="button" class="btn btn-outline-primary">
-							<img src="${pageContext.request.contextPath}/resources/images/refresh.png">
-						</button>
+						</button>						
 					</div>
 				</div>
 			</div>
@@ -267,6 +262,25 @@ goForm = function(seq) {
 	$("#formList").attr("action","/infra/member/memberViewTest");
 	$("#formList").submit();
 };
+
+$("btnModalDelete").on("click", function() {
+	$("input[name-checkboxSeq]:checked").each(function() {
+		checkboxArray.push($(this).value());
+	})
+	
+	$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+	
+	$("#modalConfirm").modal("hide");
+	
+	form.attr("action", goUrlMultiDele).submit();
+});
+
+$("#checkboxAll").click(function() {
+	if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
+	else $("input[name=checkboxSeq]").prop("checked", false);
+});
+
+
 </script>
 <script	src="../../../bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </html>

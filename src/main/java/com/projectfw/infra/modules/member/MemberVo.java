@@ -29,6 +29,8 @@ public class MemberVo {
 	
 	private int startRnumForMysql = 0;
 	
+	private String[] checkboxSeqArray;
+	
 //---------------------------------
 public void setParamsPaging(int totalRowsParam) {
 		
@@ -216,6 +218,14 @@ public void setParamsPaging(int totalRowsParam) {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public String[] getCheckboxSeqArray() {
+		return checkboxSeqArray;
+	}
+
+	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+		this.checkboxSeqArray = checkboxSeqArray;
 	}
 
 	
