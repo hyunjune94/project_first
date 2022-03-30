@@ -1,15 +1,22 @@
 package com.projectfw.infra.modules.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.projectfw.infra.common.util.UtilDateTime;
+import com.projectfw.infra.common.constants.Constants;
+
+//import com.projectfw.infra.common.util.UtilDateTime;
 
 
 @Controller
@@ -21,7 +28,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberListTest")
 	public String memberListTest(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
-		System.out.println(UtilDateTime.nowLocalDateTime());
+//		System.out.println(UtilDateTime.nowLocalDateTime());
 		
 		int count = service.selectOneCount(vo);
 		
@@ -91,6 +98,55 @@ public class MemberController {
 		return "redirect:/member/memberListTest";
 	}
 	
+	/*
+	 * @RequestMapping(value = "/member/memberMultiUeleTest") //주소입력 public String
+	 * memberMultiUeleTest(MemberVo vo, RedirectAttributes redirectAttributes)
+	 * throws Exception {
+	 * 
+	 * String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+	 * 
+	 * for(String checkboxSeq : checkboxSeqArray) { vo.setIfmmSeq(checkboxSeq);
+	 * service.uelete(vo); }
+	 * 
+	 * redirectAttributes.addFlashAttribute("vo", vo);
+	 * 
+	 * return "redirect:/member/memberListTest"; }
+	 */
+	
+	@RequestMapping(value = "/member/loginForm")
+	public String loginForm(Model model) throws Exception {
+
+		return "member/loginForm";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/member/loginProc")
+	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		System.out.println(dto.getIfmmId());
+		System.out.println(dto.getIfmmPassword());
+		Member rtMember = service.selectOneLogin(dto);
+
+		if(rtMember != null) {
+//			rtMember = service.selectOneLogin(dto);
+
+			if(rtMember.getIfmmSeq() != null) {
+				httpSession.setMaxInactiveInterval( 60 * Constants.SESSION_MINUTE);
+	
+				httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
+				httpSession.setAttribute("sessId", rtMember.getIfmmId());
+				httpSession.setAttribute("sessName", rtMember.getIfmmName());
+				
+				returnMap.put("rt", "success");
+			} else {
+				returnMap.put("rt", "fail");
+			}
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
 
 //------------------------------------------------------------------	
 	

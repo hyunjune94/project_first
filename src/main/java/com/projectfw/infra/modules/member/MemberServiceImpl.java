@@ -54,5 +54,10 @@ public class MemberServiceImpl implements MemberService{
 		return updateDelete(vo);
 	}
 
+	@Override
+	public Member selectOneLogin(Member dto) {
+		return dao.selectOneLogin(dto); 
+	}
+
 	
 }

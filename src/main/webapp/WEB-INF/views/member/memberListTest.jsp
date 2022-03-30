@@ -165,7 +165,7 @@
 		</form>
 		<br><br>
 		
-
+		<form id="" name="" method="post">
 		<div class="list_content">
 			<table class="table table-striped table-hover" style="width: 90%;">
 				<thead>
@@ -242,6 +242,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 	<br>
 	<br>

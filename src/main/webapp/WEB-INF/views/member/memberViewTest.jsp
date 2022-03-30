@@ -50,6 +50,7 @@ input, select, textarea {
 </head>
 
 <body>
+<form id="formList" name="formList" method="post">
 	<div class="form_header">
 		<div class="list_header">
 			<div class="container">
@@ -70,10 +71,6 @@ input, select, textarea {
 						      <li><a class="dropdown-item" href="#">로그아웃</a></li>
 						    </ul>
 						</li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴1</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴2</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴3</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴4</a></li>
 					</ul>
 				</header>
 			</div>
@@ -191,8 +188,10 @@ input, select, textarea {
 		<button type="button" class="btn btn-outline-danger" id="btnDelete" onclick="location.href='memberDeleTest?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">삭제</button>
 	</div>
 	
-	<br><br><br>
 	
+	
+	<br><br><br>
+</form>	
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
@@ -204,7 +203,7 @@ input, select, textarea {
 		} else {
 			return false;
 		}
-	});
+	});	
 </script>
 
 </html>

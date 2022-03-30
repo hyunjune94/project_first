@@ -73,11 +73,7 @@ input, select, textarea {
 						      <li><hr class="dropdown-divider"></li>
 						      <li><a class="dropdown-item" href="#">로그아웃</a></li>
 						    </ul>
-						</li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴1</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴2</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴3</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">메뉴4</a></li>
+						</li>						
 					</ul>
 				</header>
 			</div>
@@ -223,6 +219,14 @@ function findAddr(){
         }
     }).open();
 }
+
+
+goEdit = function(seq) {
+	$("#ifmmSeq").val(seq);
+	$("#formList").submit();
+};
+
+
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
