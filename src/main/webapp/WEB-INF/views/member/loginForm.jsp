@@ -89,6 +89,7 @@
 
 </head>
 <body>
+	<form id="" name="" method="post">
 		<div class="my_header">
 			<div class="list_header">
 				<div class="container fixed-top bg-white">
@@ -101,18 +102,18 @@
 								CHERRY</span>
 						</a>
 
-						<ul class="nav nav-pills">
+<!-- 						<ul class="nav nav-pills">
 							<li class="nav-item"><a href="#" class="nav-link">메뉴1</a></li>
 							<li class="nav-item"><a href="#" class="nav-link">메뉴2</a></li>
 							<li class="nav-item"><a href="#" class="nav-link">메뉴3</a></li>
 							<li class="nav-item"><a href="#" class="nav-link">메뉴4</a></li>
-						</ul>
+						</ul> -->
 					</header>
 				</div>
 			</div>
 		</div>
 		<div class="logo">
-			<img src="../../../images/logo.png">
+			<img src="${pageContext.request.contextPath}/resources/images/logo.png">
 		</div>
 		<br>
 		<br>
@@ -129,8 +130,7 @@
 					<div class="row" style="float: none; margin: 100 auto;">
 						<div class="col-md-8" style="float: none; margin: 0 auto;">
 							<div class="input-group mb-3">
-								<input type="text" class="form-control" placeholder="Username"
-									aria-label="Username" aria-describedby="basic-addon1">
+								<input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 							</div>
 						</div>
 					</div>
@@ -138,8 +138,7 @@
 						<div class="col-md-8" style="float: none; margin: 0 auto;">
 							<div class="input-group mb-3">
 								<input type="password" class="form-control"
-									placeholder="Password" aria-label="Password"
-									aria-describedby="basic-addon1">
+									id="ifmmPassword" name="ifmmPassword" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
 							</div>
 						</div>
 					</div>
@@ -176,21 +175,21 @@
 					<div class="row" style="float: none; margin: 100 auto;">
 						<div class="col-md-8" style="float: none; margin: 0 auto;">
 							<button class="btn btn-warning" type="button" style="width: 100%;">
-								<img src="../../../images/kakao.png"> 카카오 계정으로 로그인
+								<img src="${pageContext.request.contextPath}/resources/images/kakao.png"> 카카오 계정으로 로그인
 							</button>
 						</div>
 						<br>
 						<br>
 						<div class="col-md-8" style="float: none; margin: 0 auto;">
 							<button class="btn btn-success" type="button" style="width: 100%;">
-								<img src="../../../images/naver.png"> 네이버 계정으로 로그인
+								<img src="${pageContext.request.contextPath}/resources/images/naver.png"> 네이버 계정으로 로그인
 							</button>
 						</div>
 						<br>
 						<br>
 						<div class="col-md-8" style="float: none; margin: 0 auto;">
 							<button class="btn btn-primary" type="button" style="width: 100%;">
-								<img src="../../../images/google.png"> 구글 계정으로 로그인
+								<img src="${pageContext.request.contextPath}/resources/images/google.png"> 구글 계정으로 로그인
 							</button>
 						</div>
 					</div>
@@ -205,7 +204,7 @@
 			<h6>☎ 010-7335-2901</h6>
 
 		</div>
-
+	</form>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
@@ -218,7 +217,7 @@
 			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPassword" : $("#ifmmPassword").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "member/indexView";
+					location.href = "/infra/member/indexView";
 				} else {
 					
 					alert("회원없음");

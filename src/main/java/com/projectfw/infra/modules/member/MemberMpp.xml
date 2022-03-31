@@ -109,6 +109,7 @@
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
 			a.ifmmSeq
+		    , a.ifmmName
 		    , a.ifmmId
 		    , a.ifmmPassword
 		FROM

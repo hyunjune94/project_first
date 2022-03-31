@@ -18,23 +18,22 @@ import com.projectfw.infra.common.constants.Constants;
 
 //import com.projectfw.infra.common.util.UtilDateTime;
 
-
 @Controller
 public class MemberController {
 
 	@Autowired
 	MemberServiceImpl service;
-	
+
 	@RequestMapping(value = "/member/memberListTest")
 	public String memberListTest(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
 //		System.out.println(UtilDateTime.nowLocalDateTime());
-		
+
 		int count = service.selectOneCount(vo);
-		
+
 		vo.setParamsPaging(count);
-		
-		if(count != 0) {
+
+		if (count != 0) {
 			List<Member> list = service.selectList(vo);
 			model.addAttribute("list", list);
 		} else {
@@ -43,61 +42,61 @@ public class MemberController {
 
 		return "member/memberListTest";
 	}
-	
+
 	@RequestMapping(value = "/member/memberViewTest")
 	public String memberViewTest(MemberVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq());
 
 		Member rt = service.selectOne(vo);
-		
+
 		model.addAttribute("item", rt);
-		
+
 		return "member/memberViewTest";
 	}
-	
+
 	@RequestMapping(value = "/member/memberFormTest")
 	public String memberFormTest(Model model) throws Exception {
 
 		return "member/memberFormTest";
 	}
-	
+
 	@RequestMapping(value = "/member/memberInstTest")
 	public String memberInstTest(Model model, Member dto) throws Exception {
 
 		service.insert(dto);
-		
+
 		return "redirect:/member/memberListTest";
 	}
-	
-	@RequestMapping(value = "/member/memberForm2Test")	//주소입력
+
+	@RequestMapping(value = "/member/memberForm2Test") // 주소입력
 	public String memberForm2Test(MemberVo vo, Model model) throws Exception {
-		
+
 		Member rt = service.selectOne(vo);
-		
-		model.addAttribute("item",rt);
-		
-		return "member/memberForm2Test";	//보여지는 jsp파일
+
+		model.addAttribute("item", rt);
+
+		return "member/memberForm2Test"; // 보여지는 jsp파일
 	}
-	
-	@RequestMapping(value = "/member/memberUpdtTest")	//주소입력
+
+	@RequestMapping(value = "/member/memberUpdtTest") // 주소입력
 	public String memberUpdtTest(Member dto) throws Exception {
-		
+
 		service.update(dto);
 		return "redirect:/member/memberViewTest?ifmmSeq=" + dto.getIfmmSeq();
 	}
-	
-	@RequestMapping(value = "/member/memberDeleTest")	//주소입력
+
+	@RequestMapping(value = "/member/memberDeleTest") // 주소입력
 	public String memberDeleTest(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
-		
+
 		service.delete(vo);
-		
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());	
+
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 //		redirectAttributes.addAttribute("shOption", vo.getShOption());	
 //		redirectAttributes.addAttribute("shValue", vo.getShValue());	
 		return "redirect:/member/memberListTest";
 	}
-	
+
 	/*
 	 * @RequestMapping(value = "/member/memberMultiUeleTest") //주소입력 public String
 	 * memberMultiUeleTest(MemberVo vo, RedirectAttributes redirectAttributes)
@@ -112,53 +111,73 @@ public class MemberController {
 	 * 
 	 * return "redirect:/member/memberListTest"; }
 	 */
-	
+
 	@RequestMapping(value = "/member/loginForm")
 	public String loginForm(Model model) throws Exception {
 
 		return "member/loginForm";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/member/loginProc")
-	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
-		Map<String, Object> returnMap = new HashMap<String, Object>();
-		
-		System.out.println(dto.getIfmmId());
-		System.out.println(dto.getIfmmPassword());
-		Member rtMember = service.selectOneLogin(dto);
-
-		if(rtMember != null) {
-//			rtMember = service.selectOneLogin(dto);
-
-			if(rtMember.getIfmmSeq() != null) {
-				httpSession.setMaxInactiveInterval( 60 * Constants.SESSION_MINUTE);
+	@ResponseBody	 
+	@RequestMapping(value = "/member/loginProc") public Map<String, Object>
+	loginProc(Member dto, HttpSession httpSession) throws Exception { Map<String, Object> returnMap = new HashMap<String, Object>();
 	
-				httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
-				httpSession.setAttribute("sessId", rtMember.getIfmmId());
-				httpSession.setAttribute("sessName", rtMember.getIfmmName());
-				
-				returnMap.put("rt", "success");
-			} else {
-				returnMap.put("rt", "fail");
-			}
-		} else {
-			returnMap.put("rt", "fail");
-		}
-		return returnMap;
+	System.out.println(dto.getIfmmId());
+	System.out.println(dto.getIfmmPassword()); Member rtMember = service.selectOneLogin(dto);
+	 
+	if(rtMember != null) { 
+	// rtMember = service.selectOneLogin(dto);
+	  
+	if(rtMember.getIfmmSeq() != null) { httpSession.setMaxInactiveInterval( 60 *  Constants.SESSION_MINUTE);
+	  
+	httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
+	httpSession.setAttribute("sessId", rtMember.getIfmmId());
+	httpSession.setAttribute("sessName", rtMember.getIfmmName());
+	  
+	returnMap.put("rt", "success"); } else { returnMap.put("rt", "fail"); } 
+	} else { returnMap.put("rt", "fail"); } 
+
+	return returnMap; 
 	}
+	
+	
+	 
+
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "/member/loginProc") public Map<String, Object>
+	 * loginProc(Member dto, HttpSession httpSession) throws Exception { Map<String,
+	 * Object> returnMap = new HashMap<String, Object>();
+	 * 
+	 * System.out.println(dto.getIfmmId());
+	 * System.out.println(dto.getIfmmPassword());
+	 * 
+	 * Member rtMember = service.selectOneId(dto);
+	 * 
+	 * if(rtMember != null) { Member rtMember2 = service.selectOneLogin(dto);
+	 * 
+	 * if(rtMember2 != null) { httpSession.setMaxInactiveInterval( 60 *
+	 * Constants.SESSION_MINUTE);
+	 * 
+	 * httpSession.setAttribute("sessSeq", rtMember2.getIfmmSeq());
+	 * httpSession.setAttribute("sessId", rtMember2.getIfmmId());
+	 * httpSession.setAttribute("sessName", rtMember2.getIfmmName());
+	 * 
+	 * returnMap.put("rt", "success"); } else { returnMap.put("rt", "fail"); } }
+	 * else { returnMap.put("rt", "fail"); } return returnMap; }
+	 */
 
 //------------------------------------------------------------------	
-	
-	
+
 	@RequestMapping(value = "/member/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
 		int count = service.selectOneCount(vo);
-		
+
 		vo.setParamsPaging(count);
-		
-		if(count != 0) {
+
+		if (count != 0) {
 			List<Member> list = service.selectList(vo);
 			model.addAttribute("list", list);
 		} else {
@@ -167,46 +186,46 @@ public class MemberController {
 
 		return "member/memberList";
 	}
-	
+
 	@RequestMapping(value = "/member/memberForm")
 	public String memberForm(Model model) throws Exception {
 
 		return "member/memberForm";
 	}
-	
+
 	@RequestMapping(value = "/member/memberInst")
 	public String memberInst(Model model, Member dto) throws Exception {
 
 		service.insert(dto);
-		
+
 		return "redirect:/member/memberList";
 	}
-	
+
 	@RequestMapping(value = "/member/memberView")
 	public String memberView(MemberVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq());
 
 		Member rt = service.selectOne(vo);
-		
+
 		model.addAttribute("item", rt);
-		
+
 		return "member/memberView";
 	}
-	
-	@RequestMapping(value = "/member/memberForm2")	//주소입력
+
+	@RequestMapping(value = "/member/memberForm2") // 주소입력
 	public String memberForm2(MemberVo vo, Model model) throws Exception {
-		
+
 		Member rt = service.selectOne(vo);
-		
-		model.addAttribute("item",rt);
-		
-		return "member/memberForm2";	//보여지는 jsp파일
+
+		model.addAttribute("item", rt);
+
+		return "member/memberForm2"; // 보여지는 jsp파일
 	}
-	
-	@RequestMapping(value = "/member/memberUpdt")	//주소입력
+
+	@RequestMapping(value = "/member/memberUpdt") // 주소입력
 	public String memberUpdt(Member dto) throws Exception {
-		
+
 		service.update(dto);
 		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
 	}

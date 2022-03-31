@@ -18,12 +18,14 @@
 </head>
 <body>
 	<div>
-		<h3>sessSeq :</h3>
-		<h3>sessName</h3>
-		<h3>sessId:</h3>
+		<h3>sessSeq : <c:out value="${sessSeq }"/></h3>
+		<h3>sessName : <c:out value="${sessName }"/></h3>
+		<h3>sessId : <c:out value="${sessId }"/></h3>
 	</div>
-		 <button type="button">button</button>
-							
+	<c:if test="${not empty sessSeq }">
+		 <button type="button" name="" id="btnLogout">button</button>
+		 <button type="button" class="btn btn-outline-primary" onclick="location.href='memberListTest';">list</button>
+	</c:if>
 			
 </body>
 
