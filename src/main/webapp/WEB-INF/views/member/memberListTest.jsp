@@ -170,7 +170,7 @@
 			<table class="table table-striped table-hover" style="width: 90%;">
 				<thead>
 					<tr>
-						<th style="width:30px;">*</th>
+						<th style="width:30px;"><input class="form-check-input" type="checkbox" value="" id="checkboxAll" style="float: none;"></th>
 						<th style="width:60px;">no</th>
 						<th style="width:200px;">아이디</th>
 						<th style="width:150px; min-width: 110px;">사용자 이름</th>
@@ -188,8 +188,9 @@
 						<c:otherwise>
 							<c:forEach items="${list}" var="item" varStatus="status">
 								<tr>
-									<th style="width: 45px;"><div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="float: none;">
+									<th style="width: 45px;">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="checkboxSeq" style="float: none;">
 									</div></th>
 									<th><c:out value="${item.ifmmSeq}" /></th>
 									<td><a href="javascript:goForm(<c:out value="${item.ifmmSeq}"/>)"><c:out value="${item.ifmmId}" /></a></td>

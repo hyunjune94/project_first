@@ -59,6 +59,7 @@ input, select, textarea {
 						<svg class="bi me-2" width="40" height="32"></svg>
 						<span class="fs-4">PROJECT CHERRY</span>
 					</a>
+					<input type="hidden" id="ifmmSeq" name="ifmmSeq">
 			
 					<ul class="nav nav-pills">
 						<li class="nav-item dropdown">
@@ -184,7 +185,7 @@ input, select, textarea {
 	<br>
 	<div class="btn_area">
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='memberListTest';">목록</button>
-		<button type="button" class="btn btn-outline-primary" onclick="location.href='memberForm2Test?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">수정</button>
+		<button type="button" class="btn btn-outline-primary" onclick="location.href='javascript:goEdit(<c:out value="${item.ifmmSeq}"/>)';">수정</button>
 		<button type="button" class="btn btn-outline-danger" id="btnDelete" onclick="location.href='memberDeleTest?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">삭제</button>
 	</div>
 	
@@ -204,6 +205,12 @@ input, select, textarea {
 			return false;
 		}
 	});	
+	
+	goEdit = function(seq) {
+		$("#ifmmSeq").val(seq);
+		$("#formList").attr("action","/infra/member/memberForm2Test");
+		$("#formList").submit();
+	};
 </script>
 
 </html>

@@ -53,7 +53,6 @@ input, select, textarea {
 <body>
 
 
-
 	<div class="form_header">
 		<div class="list_header">
 			<div class="container">
@@ -87,7 +86,7 @@ input, select, textarea {
 	<hr>
 	<br>
 
-	<form method="post" action="/infra/member/memberUpdtTest">
+	<form method="post" id="formList" name="formList" action="/infra/member/memberUpdtTest">
 		<div class = "form_body">
 			<div class="container">
 	  			<input type="hidden" name="ifmmSeq" value="<c:out value="${item.ifmmSeq}"/>">
@@ -105,8 +104,6 @@ input, select, textarea {
 	  					<input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword"  placeholder="비밀번호" value="<c:out value="${item.ifmmPassword}"/>">
 				    </div>
 				    <div class="col-12 col-md-6">
-						<label for="formGroupExampleInput" class="form-label">비밀번호 확인</label>
-	  					<input type="password" class="form-control" id="Password_check" value="">
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">모바일</label>
@@ -195,9 +192,8 @@ input, select, textarea {
 			<button type="submit" class="btn btn-outline-primary">수정</button>		
 			<button type="button" class="btn btn-outline-danger" onclick="location.href='memberViewTest?ifmmSeq=<c:out value="${item.ifmmSeq}"/>';">취소</button>
 		</div>
-	</form>
 	<br><br><br>
-	
+	</form>
 </body>
 
 <script>
@@ -220,11 +216,6 @@ function findAddr(){
     }).open();
 }
 
-
-goEdit = function(seq) {
-	$("#ifmmSeq").val(seq);
-	$("#formList").submit();
-};
 
 
 </script>
