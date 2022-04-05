@@ -27,8 +27,10 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberListTest")
 	public String memberListTest(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
-//		System.out.println(UtilDateTime.nowLocalDateTime());
 
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+//		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.add00TimeString(vo.getShDateStart()));
+//		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addNowTimeString(vo.getShDateEnd()));
 		int count = service.selectOneCount(vo);
 
 		vo.setParamsPaging(count);
