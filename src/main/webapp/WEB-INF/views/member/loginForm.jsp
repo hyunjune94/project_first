@@ -10,6 +10,7 @@
 <head>
 <meta charset="uTF-8">
 <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+<meta name="google-signin-client_id" content="217755353555-3msma49ckq4fa47k0tg5tkshatcdh8c9.apps.googleusercontent.com">
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"	rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -185,7 +186,7 @@
 						<br>
 						<br>
 						<div class="col-md-8" style="float: none; margin: 0 auto;">
-							<button class="btn btn-primary" type="button" style="width: 100%;">
+							<button class="btn btn-primary" type="button" style="width: 100%;" id="GgCustomLogin" onclick="javascript:void(0)">
 								<img src="${pageContext.request.contextPath}/resources/images/google.png"> 구글 계정으로 로그인
 							</button>
 						</div>
@@ -226,4 +227,75 @@
 		})
 	});
 </script>
+
+<!-- 구글연동 -->
+<script>
+
+//처음 실행하는 함수
+function init() {
+	gapi.load('auth2', function() {
+		gapi.auth2.init();
+		options = new gapi.auth2.SigninOptionsBuilder();
+		options.setPrompt('select_account');
+        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+	})
+}
+
+function onSignIn(googleUser) {
+	var access_token = googleUser.getAuthResponse().access_token
+	$.ajax({
+    	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+		/* url: 'https://people.googleapis.com/v1/people/me' */
+        // key에 자신의 API 키를 넣습니다.
+        	/* url : "/infra/member/GloginProc" */
+		 data: {personFields:'birthdays', key:'AIzaSyDqXcMW_hrSCYZYKi1V4k8oTquByna3Y8o', 'access_token': access_token}
+		, method:'GET'
+	})
+	.done(function(e){
+        //프로필을 가져온다.
+     
+		 var profile = googleUser.getBasicProfile();
+		/* console.log(profile); */
+		var id= profile.getId();
+		var username = profile.getName();
+		
+		console.log(username);
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/GLoginProc"
+			,data : {"ifmmName" : profile.getName()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					/* location.href = "/infra/index/indexView"; */
+					location.href = "/member/indexView";
+				} else {
+					alert("구글 로그인 실패");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		})
+		
+	})
+	.fail(function(e){
+		console.log(e);
+	})
+	
+}
+
+function onSignInFailure(t){	
+	
+	console.log(t);
+	
+}
+</script>
+<!-- //구글 api 사용을 위한 스크립트 -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 </html>

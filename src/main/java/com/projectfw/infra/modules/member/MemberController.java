@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -142,7 +143,20 @@ public class MemberController {
 	return returnMap; 
 	}
 	
+	@ResponseBody //구글 로그인
+	@RequestMapping(value = "/member/loginProcGoogle")
+	public Map<String, Object> GloginProc(@RequestParam("ifmmName")String name,Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		System.out.println(name);
+		httpSession.setAttribute("sessSeq","구글 회원입니다");
+		httpSession.setAttribute("sessName",name);
+		httpSession.setAttribute("sessId","강현준");
 	
+		returnMap.put("rt", "success");
+		
+		return returnMap;
+	}
 	 
 
 	/*
