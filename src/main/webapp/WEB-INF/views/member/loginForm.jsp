@@ -18,7 +18,7 @@
 <title>강현준</title>
 
 <style type="text/css">
-.my_header {
+.my_header { 
 	/* background-color: red; */
 	width: 100%;
 	height: 120px;
