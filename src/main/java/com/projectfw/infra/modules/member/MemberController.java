@@ -120,6 +120,11 @@ public class MemberController {
 
 		return "member/loginForm";
 	}
+	@RequestMapping(value = "/member/loginFormTest")
+	public String loginFormTest(Model model) throws Exception {
+		
+		return "member/loginFormTest";
+	}
 
 	@ResponseBody	 
 	@RequestMapping(value = "/member/loginProc") public Map<String, Object>
