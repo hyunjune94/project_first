@@ -18,7 +18,7 @@
 <style type="text/css">
 .form_header {
 
-} 
+}
 
 .form_body_title {
 	text-align: center;
