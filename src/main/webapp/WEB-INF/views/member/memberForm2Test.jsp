@@ -135,7 +135,7 @@ input, select, textarea {
 	
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">생일</label>
-	  					<input type="date" class="form-control"  id="ifmmDob" name="ifmmDob" value="<c:out value="${item.ifmmDob}"/>">
+	  					<input type="date" class="form-control"  id="datepicker" name="ifmmDob" value="<c:out value="${item.ifmmDob}"/>">
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">성별</label>
@@ -195,7 +195,10 @@ input, select, textarea {
 	<br><br><br>
 	</form>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/infra/resources/js/validation.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 function findAddr(){
 	new daum.Postcode({
@@ -215,9 +218,24 @@ function findAddr(){
         }
     }).open();
 }
+</script>
+<script type="text/javascript">	
+	$(document).ready(function(){
+		 $("#datepicker").datepicker();
+	}); 
 
-
-
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

@@ -131,7 +131,7 @@ input, select, textarea {
 	
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">생일</label>
-	  					<input type="text" class="form-control" id="datepicker" id="ifmmDob" name="ifmmDob">
+	  					<input type="text" class="form-control" id="datepicker" name="ifmmDob">
 				    </div>
 				    <div class="col-12 col-md-6">
 						<label for="formGroupExampleInput" class="form-label">성별</label>
@@ -225,7 +225,7 @@ function findAddr(){
 		if(!checkNull($("#ifmmPhoneNumber3"),  $("#ifmmPhoneNumber3").val(), "모바일 전화번호를 입력해주세요")) return false;
 		if(!checkNull($("#ifmmNumber1"),  $("#ifmmNumber1").val(), "전화번호를 입력해주세요")) return false;
 		if(!checkNull($("#ifmmNumber2"),  $("#ifmmNumber2").val(), "전화번호를 입력해주세요")) return false;
-		if(!checkNull($("#ifmmDob"),  $("#ifmmDob").val(), "생년월일을 입력해주세요")) return false;
+//		if(!checkNull($("#ifmmDob"),  $("#ifmmDob").val(), "생년월일을 입력해주세요")) return false;
 //	if(!checkNull($("#gender"),  $("#gender").val(), "nulllllllll")) return false;
 		if(!checkNull($("#member_post"),  $("#member_post").val(), "주소를 입력해주세요")) return false;
 //		if(!checkNull($("#private_info"),  $("#private_info").val(), "개인정보 수집동의를 체크해주세요")) return false;
