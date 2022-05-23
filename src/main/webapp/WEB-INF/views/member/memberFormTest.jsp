@@ -24,7 +24,7 @@
 	text-align: center;
 }
 
-.form_body {
+.form_body { 
 
 }
 table {
