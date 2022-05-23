@@ -16,7 +16,7 @@
 <title>강현준</title>
 
 <style type="text/css">
-.form_header {
+.form_header { 
 
 }
 
