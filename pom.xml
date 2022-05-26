@@ -216,7 +216,14 @@
 			<version>2.13.0</version>
 		</dependency>
 		<!-- for ajax s 2022.03.12 -->	
-		   
+		
+		<!-- mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		<!-- mail -->   
 	</dependencies>
     <build>
         <plugins>

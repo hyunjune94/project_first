@@ -250,4 +250,10 @@ public class MemberController {
 		service.update(dto);
 		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
 	}
+	
+	@RequestMapping(value = "/member/modalTest")
+	public String modalTest(Model model) throws Exception {
+
+		return "member/modalTest";
+	}
 }
