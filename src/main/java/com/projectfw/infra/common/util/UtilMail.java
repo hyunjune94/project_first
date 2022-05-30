@@ -34,7 +34,7 @@ public class UtilMail {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("test123@gmail.com"));
+            message.setFrom(new InternetAddress("test123@gmail.com")); 
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse("hyunjune94@naver.com, hyunjune94@naver.com")
