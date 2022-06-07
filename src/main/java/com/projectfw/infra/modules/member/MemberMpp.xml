@@ -47,7 +47,7 @@
 			insert into infrMember (
 				ifmmId
 				, ifmmName
-				, ifmmDelNy
+				, ifmmDelNy 
 				, ifmmPassword
 				, ifmmPhoneNumber1
 				, ifmmPhoneNumber2
