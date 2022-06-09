@@ -58,7 +58,7 @@
 				, ifmmDob
 				, ifmmZipCode
 				, ifmmAddress
-				, ifmmDetailedAddress
+				, ifmmDetailedAddress 
 			) values (
 				#{ifmmId}
 				, #{ifmmName}
