@@ -44,7 +44,7 @@
 	</select>
 	
 	<insert id="insert">
-			insert into infrMember (
+			insert into infrMember ( 
 				ifmmId
 				, ifmmName
 				, ifmmDelNy 
